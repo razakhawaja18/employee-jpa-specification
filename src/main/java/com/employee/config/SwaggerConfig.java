@@ -29,7 +29,7 @@ public class SwaggerConfig {
         logger.info("Start - Rest Service : Swagger API");
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.employee.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.employee.controller"))
                 .paths(regex("/api/v1.*"))
                 .build()
                 .apiInfo(getApiInfo());
