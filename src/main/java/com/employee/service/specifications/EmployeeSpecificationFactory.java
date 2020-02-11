@@ -96,7 +96,7 @@ public class EmployeeSpecificationFactory {
     }
 
     public static Specification searchEmployeeWithSpecification(EmployeeRequestDto employeeRequestDto) {
-        log.info("In EmployeeSpecificationFactory -> searchEmployeeWithSpecification() Called | employeeRequestDto {}", employeeRequestDto);
+        log.debug("In EmployeeSpecificationFactory -> searchEmployeeWithSpecification() Called | employeeRequestDto {}", employeeRequestDto);
         List<Specification> specs = createSpecificationList(employeeRequestDto, null);
         Specification result = null;
         if (!specs.isEmpty()) {
