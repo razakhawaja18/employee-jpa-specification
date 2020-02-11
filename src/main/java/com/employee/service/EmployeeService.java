@@ -6,6 +6,7 @@ import com.employee.dto.EmployeeResponseDto;
 import com.employee.dto.PageDto;
 
 public interface EmployeeService {
-     PageDto<EmployeeResponseDto> getAllEmployeeWithSpecification(EmployeeRequestDto employeeRequestDto);
-     EmployeeResponseDto saveOrUpdateEmployee(EmployeeDto employeeDto);
+    PageDto<EmployeeResponseDto> getAllEmployeeWithSpecification(EmployeeRequestDto employeeRequestDto);
+
+    EmployeeResponseDto saveOrUpdateEmployee(EmployeeDto employeeDto);
 }

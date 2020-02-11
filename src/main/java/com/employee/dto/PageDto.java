@@ -12,20 +12,15 @@ import org.springframework.data.domain.Sort;
 public class PageDto<T> {
 
     @XmlElement(required = true)
-    protected long totalElements;
-
-    @XmlElement(required = true)
     public int firstResult;
-
     @XmlElement(required = true)
     public int maxResults;
-
     @XmlElement(required = true)
     public Sort.Direction sortDirection;
-
     @XmlElement(required = true)
     public String sortColumn;
-
+    @XmlElement(required = true)
+    protected long totalElements;
     @XmlElement(required = true)
     private List<T> listObject;
 

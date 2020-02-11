@@ -9,9 +9,10 @@ import org.springframework.web.server.ResponseStatusException;
 @Slf4j
 public class ObjectValidator {
 
-    private ObjectValidator(){
+    private ObjectValidator() {
 
     }
+
     public static void validateEmployeeDto(EmployeeDto employeeDto) {
         log.debug("In ObjectValidator -> validateEmployeeDto() Called");
         if (isStringOnlyAlphabet(employeeDto.getEmployeeName())) {

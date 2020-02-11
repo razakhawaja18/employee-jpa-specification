@@ -1,4 +1,5 @@
 package com.employee.util;
+
 public enum HairColor {
 
     BLACK(1, "BLACK"),

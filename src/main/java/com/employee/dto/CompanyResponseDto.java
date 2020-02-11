@@ -7,9 +7,11 @@ public class CompanyResponseDto {
 
     private String responseMessage;
     private CompanyDto companyDto;
-    public CompanyResponseDto(){
+
+    public CompanyResponseDto() {
     }
-    public CompanyResponseDto(CompanyDto companyDto, String message){
+
+    public CompanyResponseDto(CompanyDto companyDto, String message) {
         this.companyDto = companyDto;
         this.responseMessage = message;
     }

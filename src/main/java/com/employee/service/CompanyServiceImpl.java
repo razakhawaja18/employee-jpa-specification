@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class CompanyServiceImpl implements CompanyService{
+public class CompanyServiceImpl implements CompanyService {
 
     private CompanyRepository companyRepository;
     private ObjectMapper objectMapper;
 
-    public CompanyServiceImpl(CompanyRepository companyRepository, ObjectMapper objectMapper){
+    public CompanyServiceImpl(CompanyRepository companyRepository, ObjectMapper objectMapper) {
         this.companyRepository = companyRepository;
         this.objectMapper = objectMapper;
     }

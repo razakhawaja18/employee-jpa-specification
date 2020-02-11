@@ -54,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 findAll(employeeSpecification, paginatedRequest));
         return new PageDto(employeeList
                 .filter(pd -> !pd.isEmpty())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,ResponseMessage.EMPLOYEE_NOT_FOUND))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, ResponseMessage.EMPLOYEE_NOT_FOUND))
                 .stream().map(this::convertToEmployeeDto).collect(Collectors.toList()),
                 employeeList.get().getTotalElements(), employeeRequestDto.firstResult, employeeList.get().getNumberOfElements(),
                 employeeRequestDto.sortColumn, employeeRequestDto.sortDirection);
@@ -73,7 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 new Sort(employeeRequestDto.sortDirection, employeeRequestDto.sortColumn));
     }
 
-    private Employee convertIntoEmployee(EmployeeDto employeeDto){
+    private Employee convertIntoEmployee(EmployeeDto employeeDto) {
         Employee employee = objectMapper.convertValue(employeeDto, Employee.class);
         Branch branch = new Branch();
         branch.setBranchId(employeeDto.getBranchDto().getBranchId());

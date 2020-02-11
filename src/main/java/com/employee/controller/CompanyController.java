@@ -17,7 +17,7 @@ public class CompanyController {
 
     private CompanyService companyService;
 
-    public CompanyController(CompanyService companyService){
+    public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
     }
 

@@ -6,7 +6,7 @@ import com.employee.util.HairColor;
 
 public class ObjectFactoryUtil {
 
-    public static EmployeeDto employeeDtoMock(){
+    public static EmployeeDto employeeDtoMock() {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setEmployeeName(ConstantUtil.EMPLOYEE_NAME);
         employeeDto.setEmployeeLastName(ConstantUtil.EMPLOYEE_LAST_NAME);
@@ -16,7 +16,7 @@ public class ObjectFactoryUtil {
         return employeeDto;
     }
 
-    public static Employee employeeMock(){
+    public static Employee employeeMock() {
         Employee employee = new Employee();
         employee.setEmployeeName(ConstantUtil.EMPLOYEE_NAME);
         employee.setEmployeeLastName(ConstantUtil.EMPLOYEE_LAST_NAME);

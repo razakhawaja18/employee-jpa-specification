@@ -17,7 +17,7 @@ public class BranchController {
 
     private BranchService branchService;
 
-    public BranchController(BranchService branchService){
+    public BranchController(BranchService branchService) {
         this.branchService = branchService;
     }
 
