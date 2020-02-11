@@ -62,7 +62,7 @@ GET - http://localhost:8181/api/v1/branch
               "companyDto": {
                   "companyId": "1"
               }
-        }
+    }
         
 
 ##POST employee
