@@ -47,7 +47,7 @@ POST - http://localhost:8181/api/v1/company
            "companyPhoneNum": "0056971489699",
            "companyAddress": "San Fransisco",
            "companyCountry": "USA"
-        }
+     }
        
 
 ##Get branch
