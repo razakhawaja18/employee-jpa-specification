@@ -31,10 +31,6 @@ Based on the properties specified to start application, employee can be accessed
 ```
 http://localhost:8183/api/v1/employee
 ```
-## Swagger - Rest Api Documentation
-Rest services can be tested directly through Swagger UI.
-[http://localhost:8181/swagger-ui.html](http://localhost:8181/swagger-ui.html)
-
 
 ## Following are payload
 
@@ -82,6 +78,7 @@ POST - http://localhost:8183/api/v1/employee
         
 
 ##Get employee with specification
+
 Get -  http://localhost:8183/api/v1/employee 
 
     {
@@ -98,4 +95,7 @@ Get -  http://localhost:8183/api/v1/employee
 ##Delete employee By employee Id
 Delete - http://localhost:8183/api/v1/employee/1
 
+## For More --> Swagger - Rest Api Documentation
+Rest services can be tested directly through Swagger UI.
+[http://localhost:8181/swagger-ui.html](http://localhost:8181/swagger-ui.html)
 

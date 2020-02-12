@@ -19,6 +19,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 public class SwaggerConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(SwaggerConfig.class);
+
     /**
      * Configuration for swagger.
      *

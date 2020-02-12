@@ -13,9 +13,9 @@ import com.employee.repository.BranchRepository;
 import com.employee.repository.CompanyRepository;
 import com.employee.repository.EmployeeRepository;
 import com.employee.service.specifications.EmployeeSpecificationFactory;
+import com.employee.util.ConversionEntityDto;
 import com.employee.util.PaginatedRequest;
 import com.employee.util.ResponseMessage;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -33,15 +33,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     private CompanyRepository companyRepository;
     private BranchRepository branchRepository;
     private EmployeeRepository employeeRepository;
-    private ObjectMapper objectMapper;
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository, CompanyRepository companyRepository,
-                               BranchRepository branchRepository,
-                               ObjectMapper objectMapper) {
+                               BranchRepository branchRepository) {
         this.employeeRepository = employeeRepository;
         this.branchRepository = branchRepository;
         this.companyRepository = companyRepository;
-        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -63,9 +60,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeResponseDto saveOrUpdateEmployee(EmployeeDto employeeDto) {
         log.debug("In employeeServiceImpl -> saveOrUpdateEmployee() Called | employeeDto {}", employeeDto);
-        Employee employee = employeeRepository.save(convertIntoEmployee(employeeDto));
-        return new EmployeeResponseDto(convertToEmployeeDto(employee),
-                ResponseMessage.SUCCESS_SAVE_UPDATE_MESSAGE);
+        Employee employee = convertIntoEmployee(employeeDto);
+        employee = employeeRepository.save(employee);
+        return new EmployeeResponseDto(convertToEmployeeDto(employee), ResponseMessage.SUCCESS_SAVE_UPDATE_MESSAGE);
     }
 
     private PaginatedRequest getPaginatedRequest(EmployeeRequestDto employeeRequestDto) {
@@ -74,7 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     private Employee convertIntoEmployee(EmployeeDto employeeDto) {
-        Employee employee = objectMapper.convertValue(employeeDto, Employee.class);
+        Employee employee = ConversionEntityDto.getEmployee(employeeDto);
         Branch branch = new Branch();
         branch.setBranchId(employeeDto.getBranchDto().getBranchId());
         employee.setBranch(branch);
@@ -84,11 +81,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDto convertToEmployeeDto(Employee employee) {
         Branch branch = branchRepository.findByEmployeeList(employee);
         Company company = companyRepository.findByBranchList(branch);
-        EmployeeDto employeeDto = objectMapper.convertValue(employee, EmployeeDto.class);
-        BranchDto branchDto = objectMapper.convertValue(branch, BranchDto.class);
-        employeeDto.setBranchDto(branchDto);
-        CompanyDto companyDto = objectMapper.convertValue(company, CompanyDto.class);
+        EmployeeDto employeeDto = ConversionEntityDto.getEmployeeDto(employee);
+        BranchDto branchDto = ConversionEntityDto.getBranch(branch);
+        CompanyDto companyDto = ConversionEntityDto.getCompanyDto(company);
         branchDto.setCompanyDto(companyDto);
+        employeeDto.setBranchDto(branchDto);
         return employeeDto;
     }
 }
