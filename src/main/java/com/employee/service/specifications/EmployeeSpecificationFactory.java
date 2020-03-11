@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.persistence.criteria.Join;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 @SuppressWarnings({"unused"})
@@ -23,6 +24,7 @@ public class EmployeeSpecificationFactory {
 
     private static final String BRANCH = "branch";
     private static final String COMPANY = "company";
+    private static final String EMPLOYEE_HAIR_COLOR = "employeeHairColor";
 
     private EmployeeSpecificationFactory() {
     }
@@ -98,6 +100,10 @@ public class EmployeeSpecificationFactory {
     public static Specification searchEmployeeWithSpecification(EmployeeRequestDto employeeRequestDto) {
         log.debug("In EmployeeSpecificationFactory -> searchEmployeeWithSpecification() Called | employeeRequestDto {}", employeeRequestDto);
         List<Specification> specs = createSpecificationList(employeeRequestDto, null);
+        if(!ObjectUtils.isEmpty(employeeRequestDto.getEmployeeDto())
+                && !StringUtils.isEmpty(employeeRequestDto.getEmployeeDto().getEmployeeHairColor())){
+            specs.add(isEqual(EMPLOYEE_HAIR_COLOR,employeeRequestDto.getEmployeeDto().getEmployeeHairColor()));
+        }
         Specification result = null;
         if (!specs.isEmpty()) {
             result = specs.get(0);
